@@ -1,0 +1,75 @@
+"use client";
+
+import NextLink from "next/link";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Icon,
+  IconButton,
+  Link,
+  useColorMode,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { FaBars, FaMoon, FaSun } from "react-icons/fa6";
+import React from "react";
+
+export default function Header() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <nav className="flex flex-row justify-between px-5 py-3">
+      <IconButton
+        aria-label="OpenMenu"
+        background="transparent"
+        _hover={{
+          background: "gray",
+        }}
+        onClick={onOpen}
+        size="lg"
+        icon={<Icon as={FaBars} />}
+      />
+      <IconButton
+        aria-label="ChangeTheme"
+        background="transparent"
+        _hover={{
+          background: "gray",
+        }}
+        onClick={toggleColorMode}
+        size="lg"
+        icon={
+          colorMode === "light" ? <Icon as={FaSun} /> : <Icon as={FaMoon} />
+        }
+      />
+      <Drawer
+        placement="left"
+        variant="solid"
+        onClose={onClose}
+        isOpen={isOpen}
+        size="xs"
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader>
+            <Link as={NextLink} href="/">
+              <p>ICON_PLACE_HOLDER</p>
+            </Link>
+          </DrawerHeader>
+          <DrawerBody>
+            <Link as={NextLink} textDecoration={"none"} href="/news">
+              <p>News</p>
+            </Link>
+            <Link as={NextLink} textDecoration={"none"} href="/about">
+              <p>About</p>
+            </Link>
+            <Link as={NextLink} textDecoration={"none"} href="/contact">
+              <p>Contact</p>
+            </Link>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </nav>
+  );
+}
