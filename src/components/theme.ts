@@ -27,7 +27,7 @@ const styles = {
 
 const config: ThemeConfig = {
   initialColorMode: "system",
-  useSystemColorMode: true,
+  useSystemColorMode: false,
   ...styles,
   ...breakpoints,
 };
