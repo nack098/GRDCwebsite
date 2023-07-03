@@ -2,6 +2,8 @@
   "name": "grdcwebsite",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "Tapaneeya Odmung",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
